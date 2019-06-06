@@ -64,6 +64,81 @@
 					</h3>
 				</section>
 			</section>
+
+			<section>
+				<h2>Transform json data</h2>
+				<section></section>
+				<section>
+					<h3>With classes!</h3>
+					<p>Demo time \o/</p>
+				</section>
+				<section class="fragments">
+					<h3>What were the problems?</h3>
+					<ul>
+						<li class="fragment">The objects are not good in this case</li>
+						<li class="fragment">Hard to inject dependencies</li>
+						<li class="fragment">Hard to test correctly</li>
+						<li class="fragment">Misses a <strong>lot</strong> of object features!</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Let's try again with functions!</h3>
+					<p>Better demo time \o/</p>
+				</section>
+				<section class="fragments">
+					<h3>What went better?</h3>
+					<ul>
+						<li class="fragment">Simplier to read and write</li>
+						<li class="fragment">Simplier to inject dependencies</li>
+						<li class="fragment">Splitting into modules => Better testability!</li>
+						<li class="fragment">Separate the logic from the effects (🎉 More purity 🎉)</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Why it went better</h3>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							#### Function are first class citizen
+							```js
+							function operate(a, b, func) {
+								return func(a, b)
+							}
+							```
+					</textarea>
+				</section>
+				<section>
+					<p>
+						Simple modules => let's you keep your mind clear about what is happening, even without types
+					</p>
+				</section>
+				<section>
+					<p>
+						Async/await => Looks like the do-notation => Easy to manipulate and see what is happening
+					</p>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						#### We can chain functions on promises (Like we would with monadic types (Even if this is not a monadic type))
+						```js
+						promise
+						.then(...) // return a new promise each time
+						.then(...)
+						.then(...)
+						.catch(...)
+						```
+					</textarea>
+					</p>
+				</section>
+				<section>
+					Should we do functional in JS?
+				</section>
+				<section>
+					Probably
+					<p>¯\_(ツ)_/¯</p>
+				</section>
+			</section>
+
 		</div>
 	</div>
 
