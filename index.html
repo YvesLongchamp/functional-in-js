@@ -69,37 +69,37 @@
 				<h2>Transform json data</h2>
 				<section></section>
 				<section>
-					<h3>With classes!</h3>
+					<h3>Avec des classes !</h3>
 					<p>Demo time \o/</p>
 				</section>
 				<section class="fragments">
-					<h3>What were the problems?</h3>
+					<h3>Quels ont été les problèmes ?</h3>
 					<ul>
-						<li class="fragment">The objects are not good in this case</li>
-						<li class="fragment">Hard to inject dependencies</li>
-						<li class="fragment">Hard to test correctly</li>
-						<li class="fragment">Misses a <strong>lot</strong> of object features!</li>
+						<li class="fragment">Les objets ne sont pas appropriés ici</li>
+						<li class="fragment">Difficile d'injecter des dépendances</li>
+						<li class="fragment">Difficile à tester</li>
+						<li class="fragment">En JS, il manque à l'objet <strong>beaucoup</strong> de features importantes !</li>
 					</ul>
 				</section>
 				<section>
-					<h3>Let's try again with functions!</h3>
+					<h3>Recommençons avec des fonctions !</h3>
 					<p>Better demo time \o/</p>
 				</section>
 				<section class="fragments">
-					<h3>What went better?</h3>
+					<h3>Ce qui s'est mieux passé</h3>
 					<ul>
-						<li class="fragment">Simplier to read and write</li>
-						<li class="fragment">Simplier to inject dependencies</li>
-						<li class="fragment">Splitting into modules => Better testability!</li>
-						<li class="fragment">Separate the logic from the effects (🎉 More purity 🎉)</li>
+						<li class="fragment">Lecture et écriture simplifiées</li>
+						<li class="fragment">Injections de dépendances simplifiées</li>
+						<li class="fragment">Séparation en modules => Meilleure testabilité !</li>
+						<li class="fragment">On sépare facilement la logique des effets (🎉 Plus de pureté 🎉)</li>
 					</ul>
 				</section>
 				<section>
-					<h3>Why it went better</h3>
+					<h3>Pourquoi c'était mieux</h3>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-							#### Function are first class citizen
+							#### Les fonctions sont des citoyens de premier-ordre
 							```js
 							function operate(a, b, func) {
 								return func(a, b)
@@ -108,18 +108,20 @@
 					</textarea>
 				</section>
 				<section>
+					<h3>Des modules simples</h3>
 					<p>
-						Simple modules => let's you keep your mind clear about what is happening, even without types
+						Aide à savoir ce qu'il se passe dans un contexte, même sans types
 					</p>
 				</section>
 				<section>
+					<h3>La notation async/await</h3>
 					<p>
-						Async/await => Looks like the do-notation => Easy to manipulate and see what is happening
+						Ressemble à la do-notation => Simple à manipuler, et comprendre ce qu'on fait
 					</p>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						#### We can chain functions on promises (Like we would with monadic types (Even if this is not a monadic type))
+						#### On peut chaîner les promesses (Comme avec des types monadiques (Même si la promesse n'en est pas un))
 						```js
 						promise
 						.then(...) // return a new promise each time
@@ -130,10 +132,10 @@
 					</textarea>
 				</section>
 				<section>
-					Should we do functional in JS?
+					Du coup, devons-nous faire de la FP en JS ?
 				</section>
 				<section>
-					Probably
+					Probablement
 					<p>¯\_(ツ)_/¯</p>
 				</section>
 			</section>
