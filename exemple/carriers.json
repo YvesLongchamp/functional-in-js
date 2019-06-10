@@ -1,0 +1,65 @@
+[{
+    "name": "SoFrais",
+    "address": "FR-69",
+    "fleet": [{
+        "type": "frais",
+        "count": 5
+    }]
+}, {
+    "name": "EnVrac",
+    "address": "FR-06",
+    "fleet": [{
+        "type": "vrac",
+        "count": 3
+    }]
+}, {
+    "name": "Faitou",
+    "address": "FR-69",
+    "fleet": [{
+        "type": "frais",
+        "count": 2
+    }, {
+        "type": "vrac",
+        "count": 2
+    }, {
+        "type": "palettes",
+        "count": 2
+    }]
+}, {
+    "name": "Délicate et Seine",
+    "address": "FR-92",
+    "fleet": [{
+        "type": "palettes",
+        "count": 10
+    }, {
+        "type": "frais",
+        "count": 1
+    }]
+}, {
+    "name": "Nipoids",
+    "address": "FR-06",
+    "fleet": [{
+        "type": "palettes",
+        "count": 2
+    }]
+}, {
+    "name": "Heroues",
+    "address": "FR-34",
+    "fleet": [{
+        "type": "frais",
+        "count": 1
+    }, {
+        "type":"palettes",
+        "count": 3
+    }, {
+        "type": "vrac",
+        "count": 1
+    }]
+}, {
+    "name": "Paslourd",
+    "address": "FR-92",
+    "fleet": [{
+        "type": "palettes",
+        "count": 5
+    }]
+}]
