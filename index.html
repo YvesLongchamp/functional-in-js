@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>FP in JS</title>
 
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/reveal.css">
@@ -64,6 +64,7 @@
 					<h2>Pour le dev front ?</h2>
 					<h4>Elm</h4>
 					<h4>PureScript</h4>
+					<h4>ClojureScript</h4>
 				</section>
 				<section>
 					<h2>Du code existant en JS</h2>
@@ -121,7 +122,7 @@
 					<ul>
 						<li class="fragment">Lecture et écriture simplifiées, en petites fonctions</li>
 						<li class="fragment">Plus de dépendance à <strong>this</strong></li>
-						<li class="fragment">Composition des dépendances, plutôt qu'injection</li>
+						<li class="fragment">Composition des fonctions, plutôt qu'injection de dépendances</li>
 						<li class="fragment">Meilleure testabilité !</li>
 						<li class="fragment">On sépare facilement la logique des effets (🎉 Plus de pureté 🎉)</li>
 					</ul>
@@ -174,7 +175,7 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-							### Immutabilité : les objets
+							### Immuabilité : les objets
 							```js
 							const hommeLePlusClasseDuMonde = {
 								name: "George Abitbol",
@@ -219,7 +220,7 @@
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						### Certaines fonctions de _Array_ sont mutables
+						### Certaines fonctions de _Array_ modifient le tableau
 						```js
 						array.push(a)
 						array.reverse()
@@ -245,10 +246,10 @@
 					</textarea>
 				</section>
 				<section>
-					Du coup, devons-nous faire de la FP en JS ?
+					<h2>Du coup, devons-nous faire de la FP en JS ?</h2>
 				</section>
 				<section>
-					Probablement
+					<h2>Probablement</h2>
 					<p>¯\_(ツ)_/¯</p>
 				</section>
 			</section>
@@ -309,7 +310,7 @@
 				</section>
 				<section>
 					<p>Des streams ultra performants : <a href="https://github.com/cujojs/most">Most</a></p>
-					<p>(Ou <a href="https://rxjs-dev.firebaseapp.com/">RXJS</a>)</p>
+					<p>(Ou <a href="https://rxjs-dev.firebaseapp.com/">RxJS</a>)</p>
 				</section>
 
 			</section>
@@ -319,7 +320,14 @@
 			</section>
 			<section>
 				<h2>Merci de votre attention ❤️</h2>
-				<h4>Des questions ?</h4>
+				<h3>Des questions ?</h3>
+				<br/>	
+				<p>
+					<small>Slides dispo sur <a href="https://yveslongchamp.github.io/functional_in_js/">https://yveslongchamp.github.io/functional_in_js</a></small>
+				</p>
+				<p>
+					<small>Code dispo sur <a href="https://github.com/YvesLongchamp/functional_in_js">https://github.com/YvesLongchamp/functional_in_js</a></small>
+				</p>
 			</section>
 		</div>
 	</div>

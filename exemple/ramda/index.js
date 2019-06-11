@@ -41,11 +41,6 @@ const formatCarriers = R.over(
   )
 );
 
-R.pipe(
-  formatOrder,
-  formatCarriers
-);
-
 const toMatch = R.pipe(
   formatOrder,
   formatCarriers
