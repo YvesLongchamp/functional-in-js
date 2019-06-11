@@ -11,13 +11,14 @@ const filterEligibleCarriers = ({ order, carriers }) => ({
   )(carriers)
 });
 
-const scoreCarrier = (carrier, order) => R.pipe(
-  R.cond([
-    [() => carrier.address === order.to, R.always(20)],
-    [R.T, R.always(0)]
-  ]),
-  R.add(carrier.fleet.find(({ type }) => type === order.loadType).count)
-)();
+const scoreCarrier = (carrier, order) =>
+  R.pipe(
+    R.cond([
+      [() => carrier.address === order.to, R.always(20)],
+      [R.T, R.always(0)]
+    ]),
+    R.add(carrier.fleet.find(({ type }) => type === order.loadType).count)
+  )();
 
 const scoreCarriers = ({ carriers, order }) => ({
   order: order,
@@ -27,17 +28,21 @@ const scoreCarriers = ({ carriers, order }) => ({
   }))(carriers)
 });
 
-const sortCarriersOnScore = R.over(R.lensProp("carriers"), R.sort((a, b) => b.score - a.score));
+const sortCarriersOnScore = R.over(
+  R.lensProp("carriers"),
+  R.sort((a, b) => b.score - a.score)
+);
 
 const formatOrder = R.over(
-  R.lensProp("order"), 
-  ({ number, truckCount, loadType, from, to }) => `[${number}] ${truckCount} ${loadType} de ${from} à ${to}`
+  R.lensProp("order"),
+  ({ number, truckCount, loadType, from, to }) =>
+    `[${number}] ${truckCount} ${loadType} de ${from} à ${to}`
 );
 
 const formatCarriers = R.over(
   R.lensProp("carriers"),
-  R.addIndex(R.map)(({ carrier: { name }, score }, index) =>
-    `${index + 1} - ${name} (${score})`
+  R.addIndex(R.map)(
+    ({ carrier: { name }, score }, index) => `${index + 1} - ${name} (${score})`
   )
 );
 
@@ -55,7 +60,6 @@ const findMatch = R.pipe(
   toMatch,
   toString
 );
-
 
 const matchOrders = ({ orders, carriers }) =>
   R.map(order => findMatch({ order, carriers }))(orders);

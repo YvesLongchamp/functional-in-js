@@ -1,4 +1,4 @@
-const { readFile } = require('fs');
+const { readFile } = require("fs");
 
 const filterEligibleCarriers = ({ order, carriers }) => ({
   order,
@@ -31,24 +31,31 @@ const sortCarriersOnScore = ({ order, carriers }) => ({
   carriers: carriers.sort((a, b) => b.score - a.score)
 });
 
-const toMatch = ({ order: { number, truckCount, loadType, from, to }, carriers }) => ({
+const toMatch = ({
+  order: { number, truckCount, loadType, from, to },
+  carriers
+}) => ({
   order: `[${number}] ${truckCount} ${loadType} de ${from} à ${to}`,
-  carriers: carriers
-    .map(
-      ({ carrier: { name }, score }, index) =>
-        `${index + 1} - ${name} (${score})`
-    )
+  carriers: carriers.map(
+    ({ carrier: { name }, score }, index) => `${index + 1} - ${name} (${score})`
+  )
 });
 
 const toString = ({ order, carriers }) => `${order} : [${carriers.join(", ")}]`;
 
 const pipe = (...functions) =>
-    functions.reduce(
-        (composite, func) => value => func(composite(value)),
-        value => value
-    );
+  functions.reduce(
+    (composite, func) => value => func(composite(value)),
+    value => value
+  );
 
-const findMatch = pipe(filterEligibleCarriers, scoreCarriers, sortCarriersOnScore, toMatch, toString);
+const findMatch = pipe(
+  filterEligibleCarriers,
+  scoreCarriers,
+  sortCarriersOnScore,
+  toMatch,
+  toString
+);
 
 const matchOrders = ({ orders, carriers }) =>
   orders.map(order => findMatch({ order, carriers }));
