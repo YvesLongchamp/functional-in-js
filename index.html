@@ -62,14 +62,20 @@
 				</section>
 				<section>
 					<h2>Pour le dev front ?</h2>
-					<h3 class="fragment">Elm</h3>
-					<h3 class="fragment">PureScript</h3>
+					<h4>Elm</h4>
+					<h4>PureScript</h4>
 				</section>
 				<section>
-					<p>JS est le langage pour lequel on crée le plus de repositories</p>
-					<img width="465" height="355"
+					<h2>Du code existant en JS</h2>
+					<h4>Tâches Node, React, Vue...</h4>
+				</section>
+				<section>
+					<p>JS est le langage pour lequel<br/> on crée le plus de repositories</p>
+					<img height="300"
 						data-src="https://github.blog/wp-content/uploads/2018/11/48519511-067a2380-e822-11e8-9a59-07d7810c1b5d.png" />
-					<p>(source: <a href="https://octoverse.github.com/projects#languages"> Github's Octoverse </a>)</p>
+					<p>
+						<small>(source: <a href="https://octoverse.github.com/projects#languages"> Github's Octoverse </a>)</small>
+					</p>
 				</section>
 				<section>
 					<h2>
@@ -80,68 +86,161 @@
 
 			<section>
 				<section>
-					<h3>Transform json data</h3>
+					<h2>JavaScript est multi paradigmes</h2>
+					<ul>
+						<li>Impératif</li>
+						<li>Orienté objet, via les prototypes</li>
+						<li>Fonctionnel</li>
+					</ul>
 				</section>
 				<section>
-					<h3>Avec des classes !</h3>
+					<h2>On peut faire la même chose de plusieurs manières bien différentes</h2>
+				</section>
+				<section>
+					<h2>Exemple : "Matcher" des ordres de transport</h2>
+				</section>
+				<section>
+					<h2>Avec des classes !</h2>
 					<p>Demo time \o/</p>
 				</section>
 				<section class="fragments">
-					<h3>Quels ont été les problèmes ?</h3>
+					<h2>Quels ont été les problèmes&nbsp;?</h2>
 					<ul>
-						<li class="fragment">Les objets ne sont pas appropriés ici</li>
-						<li class="fragment">Difficile d'injecter des dépendances</li>
-						<li class="fragment">Difficile à tester</li>
+						<li class="fragment">Beaucoup de verbosité</li>
+						<li class="fragment">On dépend de <strong>this</strong></li>
+						<li class="fragment">Difficile à tester sans mock</li>
 						<li class="fragment">En JS, il manque à l'objet <strong>beaucoup</strong> de features importantes !</li>
 					</ul>
 				</section>
 				<section>
-					<h3>Recommençons avec des fonctions !</h3>
+					<h2>Recommençons avec des fonctions&nbsp;!</h2>
 					<p>Better demo time \o/</p>
 				</section>
 				<section class="fragments">
-					<h3>Ce qui s'est mieux passé</h3>
+					<h2>Ce qui s'est mieux passé</h2>
 					<ul>
-						<li class="fragment">Lecture et écriture simplifiées</li>
-						<li class="fragment">Injections de dépendances simplifiées</li>
-						<li class="fragment">Séparation en modules => Meilleure testabilité !</li>
+						<li class="fragment">Lecture et écriture simplifiées, en petites fonctions</li>
+						<li class="fragment">Plus de dépendance à <strong>this</strong></li>
+						<li class="fragment">Composition des dépendances, plutôt qu'injection</li>
+						<li class="fragment">Meilleure testabilité !</li>
 						<li class="fragment">On sépare facilement la logique des effets (🎉 Plus de pureté 🎉)</li>
 					</ul>
 				</section>
+			</section>
+			<section>
 				<section>
-					<h3>Pourquoi c'était mieux</h3>
+					<h2>Le paradigme fonctionnel avec JS</h2>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-							#### Les fonctions sont des citoyens de premier-ordre
+							### Les fonctions sont des citoyens de premier-ordre
 							```js
 							function operate(a, b, func) {
 								return func(a, b)
 							}
+
+							const sum = (c, d) => c + d
 							```
 					</textarea>
 				</section>
-				<section>
-					<h3>Des modules simples</h3>
-					<p>
-						Aide à savoir ce qu'il se passe dans un contexte, même sans types
-					</p>
-				</section>
-				<section>
-					<h3>La notation async/await</h3>
-					<p>
-						Ressemble à la do-notation => Simple à manipuler, et comprendre ce qu'on fait
-					</p>
+				<section data-markdown>
+					<textarea data-template>
+							### Les modules sont faciles à implémenter
+							```js
+							function myModule(a) {
+								function closure(b) {}
+
+								return {
+									closure
+								}
+							}
+							```
+					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-						#### On peut chaîner les promesses (Comme avec des types monadiques (Même si la promesse n'en est pas un))
+							### Immuabilité : les tableaux
+							```js
+							const array = [1,2,3]
+								.concat([4,5,6, ...[7]])
+								.map(value => value + 1)
+								.filter(value => value % 2 === 0)
+
+							const sum = array
+								.reduce((sum, value) => sum + value, 0)
+								// => 20
+							```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+							### Immutabilité : les objets
+							```js
+							const hommeLePlusClasseDuMonde = {
+								name: "George Abitbol",
+								status: "alive"
+							}
+							const dead = {
+								...hommeLePlusClasseDuMonde,
+								status: "dead",
+								lastSentence: "Monde de merde !"
+							}
+							```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Promesses: structure monadique pour gérer l'asynchrone
 						```js
 						promise
-						.then(...) // return a new promise each time
-						.then(...)
-						.then(...)
-						.catch(...)
+							.then(...) // return a new promise each time
+							.then(...)
+							.then(...)
+							.catch(...)
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Async/await : équivalent à la *do* notation en Haskell
+						```js
+						async function run() {
+							try {
+								const a = await promiseA()
+								const b = await promiseB(a)
+								const c = await promiseC(a, b)
+							} catch (error) {}
+						}
+						```
+					</textarea>
+				</section>
+				<section>
+					<h2>...Mais tout n'est pas génial pour faire de la FP</h2>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Certaines fonctions de _Array_ sont mutables
+						```js
+						array.push(a)
+						array.reverse()
+						array.splice()
+						```
+					</textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Modifier un objet de manière immuable peut s'avérer complexe
+						```js
+						const updated = {
+							...initial,
+							myProperty: {
+								...initial.myProperty,
+								myArray: [
+									...initial.myProperty.myArray,
+									myNewValue
+								]
+							}
+						}	
 						```
 					</textarea>
 				</section>
@@ -157,7 +256,7 @@
 			<section>
 				<h2>Les librairies</h2>
 				<section>
-					<h3>Comment faire quand on veut pas réinventer la roue ?</h3>
+					<h2>Comment faire quand on veut pas réinventer la roue ?</h2>
 				</section>
 				<section>
 					<img data-src="https://www.eewee.fr/wp-content/uploads/2016/06/logo-lodash-js.jpg" />
@@ -168,17 +267,39 @@
 					<p><a href="https://ramdajs.com/">Ramda</a> (Mon favori ❤️)</p>
 				</section>
 				<section>
-					<h3>Comment utiliser Ramda ?</h3>
+					<h2>Comment utiliser Ramda ?</h2>
 					<p>More demo time \o/</p>
 				</section>
 				<section>
-					<h3>
+					<h2>
 						D'autres librairies utiles
-					</h3>
+					</h2>
 				</section>
 				<section>
 					<img data-src="https://cdn-images-1.medium.com/max/1200/1*mA2NV6aiBt4iVKFGqFmy5g.jpeg" />
 					<p>De l'immuabilité : <a href="https://immutable-js.github.io/immutable-js/">ImmutableJS</a></p>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						### Des types ! (au runtime)
+						#### tcomb
+						```js
+						const PositiveNumber = 
+							t.refinement(t.Number, n => n >= 0, 'PositiveNumber')
+						
+						const Person = t.struct({
+							name: t.maybe(t.String),
+							age: PositiveNumber
+						})
+						
+						const George = Person({
+							name: 'George Abitbol',
+							age: 125
+						})
+						```
+					</textarea>
+					<h3>Des types ! (au runtime)</h3>
+
 				</section>
 				<section>
 					<img width="200" height="200"
